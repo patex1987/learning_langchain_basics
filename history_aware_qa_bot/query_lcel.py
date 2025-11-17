@@ -30,6 +30,7 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from dotenv import load_dotenv
 import warnings
 import os
+
 warnings.filterwarnings("ignore")
 
 load_dotenv()
@@ -66,6 +67,7 @@ QA_PROMPT = ChatPromptTemplate.from_messages(
     ]
 )
 
+
 # indexing
 def create_vector_retriever():
     documents = TextLoader("./docs/faq.txt").load()
@@ -75,26 +77,23 @@ def create_vector_retriever():
     retriever = db.as_retriever()
     return retriever
 
+
 VECTOR_RETRIEVER = create_vector_retriever()
 # Retrieve chat history
-history_aware_retriever = create_history_aware_retriever(
-    llm, VECTOR_RETRIEVER, CONTEXTUALIZE_Q_PROMPT
-)
+history_aware_retriever = create_history_aware_retriever(llm, VECTOR_RETRIEVER, CONTEXTUALIZE_Q_PROMPT)
 
 # Retrieve and generate
 question_answer_chain = create_stuff_documents_chain(llm, QA_PROMPT)
 
+
 def generate_response(query):
-    """ Generate a response to a user query"""
+    """Generate a response to a user query"""
     rag_chain = create_retrieval_chain(history_aware_retriever, question_answer_chain)
-    return rag_chain.invoke({
-        "chat_history": chat_history,
-        "input": query
-    })
+    return rag_chain.invoke({"chat_history": chat_history, "input": query})
 
 
 def query(query):
-    """ Query and generate a response"""
+    """Query and generate a response"""
     response = generate_response(query)
     chat_history.extend([HumanMessage(content=query), response["answer"]])
     return response

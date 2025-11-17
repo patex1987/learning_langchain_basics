@@ -72,7 +72,7 @@ def get_embedding(text_to_embed):
 # indexing
 def load_split_documents() -> list[Document]:
     """Load a file from path, split it into chunks, embed each chunk and load it into the vector store."""
-    raw_text = TextLoader("./docs/faq.txt").load()
+    raw_text = TextLoader("./docs/faq.txt.txt").load()
     text_splitter = CharacterTextSplitter(chunk_size=30, chunk_overlap=0, separator=".")
     chunks = text_splitter.split_documents(raw_text)
     # print(f"number of chunks {len(chunks)}")
@@ -94,7 +94,7 @@ def create_embeddings_retriever(documents, user_query) -> VectorStoreRetriever:
 
 def build_chain(retriever) -> RunnableSequence:
     """
-    Build a chain for an FAQ application vectorizing the faq documents.
+    Build a chain for an FAQ application vectorizing the faq.txt documents.
 
     Build the chain with the explicit notation.
 
