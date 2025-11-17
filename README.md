@@ -1,0 +1,1 @@
+Notes taken from the courses I am taking on linkedin about langchain
