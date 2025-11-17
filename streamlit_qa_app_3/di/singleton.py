@@ -1,0 +1,3 @@
+from streamlit_qa_app_3.di.default import create_default_dependencies
+
+DEPENDENCIES_SINGLETON = create_default_dependencies()

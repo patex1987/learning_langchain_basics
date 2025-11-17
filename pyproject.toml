@@ -8,6 +8,7 @@ dependencies = [
     "colorama>=0.4.6",
     "langchain[google-genai]>=1.0.7",
     "langchain-community>=0.4.1",
+    "streamlit>=1.51.0",
 ]
 
 

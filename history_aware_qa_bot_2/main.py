@@ -9,9 +9,9 @@ from langchain_core.retrievers import BaseRetriever
 from langchain_core.runnables import RunnableSequence
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 
-from history_aware_qa_bot.contextualize_prompt import CONTEXTUALIZE_Q_PROMPT
-from history_aware_qa_bot.query_explicit import query, create_full_rag_chain
-from history_aware_qa_bot.vector_retriever import create_vector_retriever
+from history_aware_qa_bot_2.contextualize_prompt import CONTEXTUALIZE_Q_PROMPT
+from history_aware_qa_bot_2.query_explicit import query, create_full_rag_chain
+from history_aware_qa_bot_2.vector_retriever import create_vector_retriever
 
 
 @dataclass

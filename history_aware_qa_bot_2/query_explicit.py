@@ -128,7 +128,7 @@ def create_contextualized_question_chain(
     return contextualize_q_chain
 
 
-def create_history_aware_retriever(contextualize_q_chain, vector_retriever) -> RunnableSequence:
+def create_history_aware_retriever(contextualize_q_chain: RunnableSequence, vector_retriever: BaseRetriever) -> RunnableSequence:
     """
     Create a history aware retriever.
 
